@@ -196,8 +196,7 @@ O texto deve:
 Não introduza novas observações ou conquistas nesta seção.
 
 Preencha LOCAL com "Uberlândia".
-Preencha DATA_RELATORIO com a data fornecida na entrada
-ou "[Preencher]" se ela não tiver sido informada.
+Preencha DATA_RELATORIO com a data do dia que o relatório for gerado, no formato "dia, mês de ano".
 
 Não invente uma data.
 
