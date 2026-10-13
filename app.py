@@ -126,13 +126,19 @@ if st.button("🚀 Gerar Relatório", type="primary"):
                 
                 # Botões de Download
                 col1, col2 = st.columns(2)
+
+                nome_aluno = str(json.loads(relatorio).get("ALUNO") or "Aluno").strip()
+                nome_aluno = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "", nome_aluno)
+                nome_aluno = re.sub(r"\s+", "_", nome_aluno).strip("._")
+                if not nome_aluno or nome_aluno == "[Preencher]":
+                    nome_aluno = "Aluno"
                 
                 with col1:
                     doc_buffer = criar_documento_word(relatorio)
                     st.download_button(
                         label="📥 Descarregar em Word (.docx)",
                         data=doc_buffer,
-                        file_name="Relatorio_Pedagógico_BabyNap.docx",
+                        file_name=f"Relatorio_{nome_aluno}_BabyNap.docx",
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     )
                     
