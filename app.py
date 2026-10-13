@@ -2,12 +2,20 @@ import io
 import json
 import os
 import re
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 import streamlit as st
 from docx import Document
 from google import genai
 from google.genai import types
 
 from config import MODEL_NAME, SYSTEM_INSTRUCTION_2
+
+MESES_DO_ANO = (
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+)
 
 # Configuração da página Streamlit
 st.set_page_config(
@@ -41,7 +49,12 @@ def gerar_relatorio_gemini(rascunho_texto: str) -> str:
             response_mime_type="application/json"
         )
     )
-    return response.text
+    dados_relatorio = json.loads(response.text)
+    data_atual = datetime.now(ZoneInfo("America/Sao_Paulo"))
+    dados_relatorio["DATA_RELATORIO"] = (
+        f"{data_atual.day} de {MESES_DO_ANO[data_atual.month - 1]} de {data_atual.year}"
+    )
+    return json.dumps(dados_relatorio, ensure_ascii=False)
 
 def criar_documento_word(texto_relatorio: str) -> io.BytesIO:
     dados = json.loads(texto_relatorio)

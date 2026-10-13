@@ -161,7 +161,7 @@ imaginação, narrativas e expressão de ideias.
 
 REGRAS PARA OS SEIS CAMPOS:
 
-- Escreva no minimo 4 parágrafos para cada campo.
+- Escreva de 2 a 4 parágrafos para cada campo.
 - Sempre ao se referir à criança, utilize o nome fornecido no material de entrada.
 - Considere as observações fornecidas como fonte principal.
 - Relacione o texto às experiências reais da criança.
@@ -196,9 +196,7 @@ O texto deve:
 Não introduza novas observações ou conquistas nesta seção.
 
 Preencha LOCAL com "Uberlândia".
-Preencha DATA_RELATORIO com a data do dia que o relatório for gerado, no formato "dia, mês de ano".
-
-Não invente uma data.
+Deixe DATA_RELATORIO como uma string vazia. A aplicação preencherá esse campo com a data atual.
 
 ==================================================
 6. ESQUEMA JSON OBRIGATÓRIO
